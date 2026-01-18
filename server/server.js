@@ -9,13 +9,17 @@ app.use(express.json());
 // Serve React build folder
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Node server!" });
+});
+
 // Catch-all route to serve index.html
-app.get("/.*/", (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
-app.get("/api/hello", (req, res) => {
-  res.json({ message: "Hello from Node server!" });
+app.get('/weight', (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 const PORT = 4000;
