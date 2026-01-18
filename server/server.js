@@ -9,15 +9,18 @@ app.use(express.json());
 // Serve React build folder
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+// Debug all incoming requests
+app.use((req, res, next) => {
+  console.log("Request URL:", req.url);
+  next();
+});
+
+// API routes first   
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello from Node server!" });
 });
 
-// Catch-all route to serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
-
+// React Router fallback (must come last)
 app.get('/weight', (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
@@ -26,4 +29,3 @@ const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
