@@ -21,6 +21,7 @@ function App() {
                   { date: "2025-09-11", weight: 79.3 },
                   { date: "2026-01-11", weight: 82.7 },
                   { date: "2026-01-18", weight: 83.4 },
+                  { date: "2026-01-19", weight: 82.7 },
                 ]}
               />
             </div>
